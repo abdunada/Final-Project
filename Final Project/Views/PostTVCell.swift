@@ -49,7 +49,7 @@ class PostTVCell: UITableViewCell {
     }
 }
 
-extension PostTVCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension PostTVCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -62,5 +62,10 @@ extension PostTVCell: UICollectionViewDelegate, UICollectionViewDataSource {
         cell.tagNameLabelOutlet.text = tags[indexPath.row]
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        return CGSize(width: collectionView.frame.width * 0.45, height: collectionView.frame.width * 0.15)
     }
 }

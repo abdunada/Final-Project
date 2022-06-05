@@ -131,7 +131,7 @@ extension PostDetailsVC: UITableViewDelegate, UITableViewDataSource {
 //    }
 }
 
-extension PostDetailsVC: UICollectionViewDelegate, UICollectionViewDataSource {
+extension PostDetailsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -144,5 +144,10 @@ extension PostDetailsVC: UICollectionViewDelegate, UICollectionViewDataSource {
         cell.tagNameLabelOutlet.text = tags[indexPath.row]
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        return CGSize(width: collectionView.frame.width * 0.45, height: collectionView.frame.width * 0.15)
     }
 }

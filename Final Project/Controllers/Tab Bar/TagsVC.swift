@@ -13,6 +13,7 @@ class TagsVC: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var tagsCollectionViewOutlet: UICollectionView!
     @IBOutlet weak var loaderActivityIndicatorViewOutlet: NVActivityIndicatorView!
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +46,7 @@ class TagsVC: UIViewController {
     var tags: [String] = []
 }
 
-extension TagsVC: UICollectionViewDelegate, UICollectionViewDataSource {
+extension TagsVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -71,5 +72,10 @@ extension TagsVC: UICollectionViewDelegate, UICollectionViewDataSource {
 //            self.present(page, animated: true, completion: nil)
             navigationController?.pushViewController(page, animated: true)
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        return CGSize(width: collectionView.frame.width * 0.485, height: collectionView.frame.width * 0.485)
     }
 }
